@@ -260,7 +260,7 @@ shinyServer(function(input, output, session) {
         df, filter = 'bottom', rownames = F,
         caption = htmltools::tags$caption(
           style = 'caption-side: top;text-align: center;',
-          'Table: ', htmltools::em('selected columns of the input .txt file')
+          'Table: ', htmltools::em('selected columns of the uploaded .txt files')
         ), escape = F
       )
     }else{
@@ -391,7 +391,9 @@ shinyServer(function(input, output, session) {
           style = 'caption-side: top;text-align: center;',
           'Table: ', htmltools::em(
             'Journals with the number of articles and Web of Science category of journals'
-          )
+          ),
+          htmltools::br(), 'TA (P): numbers of total articles (percentages)',
+          htmltools::br(), 'TC (P): numbers of total cited times (percentages)'
         )
       )
     }else{
@@ -424,7 +426,9 @@ shinyServer(function(input, output, session) {
         category, filter = 'bottom', rownames = F,
         caption = htmltools::tags$caption(
           style = 'caption-side: top;text-align: center;',
-          'Table: ', htmltools::em('Web of Science Category')
+          'Table: ', htmltools::em('Web of Science Categories'),
+          htmltools::br(), 'TA: numbers of total articles',
+          htmltools::br(), 'P: percentages'
         )
       )
     }else{
@@ -527,12 +531,19 @@ shinyServer(function(input, output, session) {
       author$`RP (RP R)` = paste(author$`RP (RP R)`, " (",
                                  rank(-author$`RP (RP R)`, ties.method = 'min'),
                                  ")", sep = "")
+      
+      colnames(author)[2] = "TA"
       # end of building
       
       DT::datatable(
         author, filter = 'bottom', rownames = F,
         caption = htmltools::tags$caption(style = 'caption-side: top;text-align: center;',
-                                          'Table: ', htmltools::em('Authors'))
+                                          'Table: ', htmltools::em('Authors'),
+                                          htmltools::br(), 'TA: numbers of total articles',
+                                          htmltools::br(), 'R: rankings',
+                                          htmltools::br(), '%: percentages',
+                                          htmltools::br(), 'FA (FR): first author articles (rankings)',
+                                          htmltools::br(), 'RP (RP R): corresponding author articles (rankings)')
       )
     }else{
       NULL
@@ -548,10 +559,12 @@ shinyServer(function(input, output, session) {
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
+      colnames(keyword)[2] = 'TA'
       DT::datatable(
         keyword, filter = 'bottom', rownames = F,
         caption = htmltools::tags$caption(style = 'caption-side: top;text-align: center;',
-                                          'Table: ', htmltools::em('keywords'))
+                                          'Table: ', htmltools::em('keywords'),
+                                          htmltools::br(), 'TA: total numbers of articles')
       )
     }else{
       NULL
@@ -580,13 +593,13 @@ shinyServer(function(input, output, session) {
                                 rank(-country$`CA (CR)`, ties.method = 'min'),
                                 ")", sep = "")
       
-      country$`SA (CR)` = unlist(lapply(country$country, function(x) {
+      country$`SA (SR)` = unlist(lapply(country$country, function(x) {
         match = as.character(df$country[which(grepl(x, as.character(df$country)))])
         sum(!grepl(';', match)) # count single article
       }))
       
-      country$`SA (CR)` = paste(country$`SA (CR)`, " (",
-                                rank(-country$`SA (CR)`, ties.method = 'min'),
+      country$`SA (SR)` = paste(country$`SA (SR)`, " (",
+                                rank(-country$`SA (SR)`, ties.method = 'min'),
                                 ")", sep = "")
       
       # country$`RP (RP R)` = unlist(lapply(country$country, function(x){
@@ -612,7 +625,13 @@ shinyServer(function(input, output, session) {
       DT::datatable(
         country, filter = 'bottom', rownames = F,
         caption = htmltools::tags$caption(style = 'caption-side: top;text-align: center;',
-                                          'Table: ', htmltools::em('countrys'))
+                                          'Table: ', htmltools::em('countries'),
+                                          htmltools::br(), 'TA: total numbers of articles',
+                                          htmltools::br(), 'R: rankings',
+                                          htmltools::br(), '%: percentages',
+                                          htmltools::br(), 'CA (CR): cooperative articles and rankings',
+                                          htmltools::br(), 'SA (SR): single country articles and rankings',
+                                          htmltools::br(), 'S: single country articles')
       )
     }else{
       NULL
@@ -670,14 +689,14 @@ shinyServer(function(input, output, session) {
         ")", sep = ""
       )
       
-      institution$`SA (CR)` = unlist(lapply(institution$institution, function(x) {
+      institution$`SA (SR)` = unlist(lapply(institution$institution, function(x) {
         match = as.character(df$institution[which(grepl(x, as.character(df$institution)))])
         sum(!grepl(';', match)) # count single article
       }))
       
-      institution$`SA (CR)` = paste(
-        institution$`SA (CR)`, " (",
-        rank(-institution$`SA (CR)`, ties.method = 'min'),
+      institution$`SA (SR)` = paste(
+        institution$`SA (SR)`, " (",
+        rank(-institution$`SA (SR)`, ties.method = 'min'),
         ")", sep = ""
       )
       
@@ -703,7 +722,13 @@ shinyServer(function(input, output, session) {
       DT::datatable(
         institution, filter = 'bottom', rownames = F,
         caption = htmltools::tags$caption(style = 'caption-side: top;text-align: center;',
-                                          'Table: ', htmltools::em('institutions'))
+                                          'Table: ', htmltools::em('institutions'),
+                                          htmltools::br(), 'TA: total numbers of articles',
+                                          htmltools::br(), 'R: rankings',
+                                          htmltools::br(), '%: percentages',
+                                          htmltools::br(), 'CA (CR): cooperative articles and rankings',
+                                          htmltools::br(), 'SA (SR): single institution articles and rankings',
+                                          htmltools::br(), 'S: single instituion articles')
       )
     }else{
       NULL
