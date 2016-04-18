@@ -1409,7 +1409,7 @@ shinyServer(function(input, output, session) {
       matrix_keyword_row = NULL
       for (i in 1:nrow(keyword)) {
         for (j in 1:nrow(df)) {
-          tmp = which(strsplit(as.character(df$keyword[j]), ";")[[1]] == keyword[i,1])
+          tmp = which(toupper(stemDocument(tolower(strsplit(as.character(df$keyword[j]), ";")[[1]]))) == keyword[i,1])
           if (length(tmp) == 0)
             tmp1 = F
           else
@@ -1730,7 +1730,7 @@ shinyServer(function(input, output, session) {
       matrix_keyword_row = NULL
       for (i in 1:length(select)) {
         for (j in 1:nrow(df)) {
-          tmp = which(strsplit(as.character(df$keyword[j]), ";")[[1]] == select[i])
+          tmp = which(toupper(stemDocument(tolower(strsplit(as.character(df$keyword[j]), ";")[[1]]))) == select[i,1])
           if (length(tmp) == 0)
             tmp1 = F
           else
@@ -2063,7 +2063,7 @@ shinyServer(function(input, output, session) {
       matrix_keyword_row = NULL
       for (i in 1:nrow(keyword)) {
         for (j in 1:nrow(df)) {
-          tmp = which(strsplit(as.character(df$keyword[j]), ";")[[1]] == keyword[i,1])
+          tmp = which(toupper(stemDocument(tolower(strsplit(as.character(df$keyword[j]), ";")[[1]]))) == keyword[i,1])
           if (length(tmp) == 0)
             tmp1 = F
           else
@@ -2152,7 +2152,7 @@ shinyServer(function(input, output, session) {
       matrix_keyword_row = NULL
       for (i in 1:nrow(keyword)) {
         for (j in 1:nrow(df)) {
-          tmp = which(strsplit(as.character(df$keyword[j]), ";")[[1]] == keyword[i,1])
+          tmp = which(toupper(stemDocument(tolower(strsplit(as.character(df$keyword[j]), ";")[[1]]))) == keyword[i,1])
           if (length(tmp) == 0)
             tmp1 = F
           else
@@ -2241,7 +2241,7 @@ shinyServer(function(input, output, session) {
       matrix_keyword_row = NULL
       for (i in 1:nrow(keyword)) {
         for (j in 1:nrow(df)) {
-          tmp = which(strsplit(as.character(df$keyword[j]), ";")[[1]] == keyword[i,1])
+          tmp = which(toupper(stemDocument(tolower(strsplit(as.character(df$keyword[j]), ";")[[1]]))) == keyword[i,1])
           if (length(tmp) == 0)
             tmp1 = F
           else
