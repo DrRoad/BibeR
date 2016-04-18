@@ -554,8 +554,11 @@ shinyServer(function(input, output, session) {
     df = year_slider_data_for_keyword_table()
     if (!is.null(df)) {
       keyword = unlist(lapply(df$keyword, function(x) {
-        x = gsub("-", " ", x)
-        strsplit(as.character(x), ";")[[1]]
+        if(!is.na(x)) {
+          x = gsub("-", " ", x)
+          x = strsplit(as.character(x), ";")[[1]]
+          toupper(stemDocument(tolower(x)))
+        }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
@@ -884,7 +887,11 @@ shinyServer(function(input, output, session) {
       df = values$df
       
       keyword = unlist(lapply(df$keyword, function(x) {
-        strsplit(as.character(x), ";")[[1]]
+        if(!is.na(x)) {
+          x = gsub("-", " ", x)
+          x = strsplit(as.character(x), ";")[[1]]
+          toupper(stemDocument(tolower(x)))
+        }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
@@ -1386,7 +1393,11 @@ shinyServer(function(input, output, session) {
       df = values$df
       
       keyword = unlist(lapply(df$keyword, function(x) {
-        strsplit(as.character(x), ";")[[1]]
+        if(!is.na(x)) {
+          x = gsub("-", " ", x)
+          x = strsplit(as.character(x), ";")[[1]]
+          toupper(stemDocument(tolower(x)))
+        }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
@@ -2034,7 +2045,11 @@ shinyServer(function(input, output, session) {
       df = df[which(grepl(paste(select, collapse = "|"), df$author)),]
       
       keyword = unlist(lapply(df$keyword, function(x) {
-        strsplit(as.character(x), ";")[[1]]
+        if(!is.na(x)) {
+          x = gsub("-", " ", x)
+          x = strsplit(as.character(x), ";")[[1]]
+          toupper(stemDocument(tolower(x)))
+        }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
@@ -2119,7 +2134,11 @@ shinyServer(function(input, output, session) {
       df = df[which(grepl(paste(select, collapse = "|"), df$country)),]
       
       keyword = unlist(lapply(df$keyword, function(x) {
-        strsplit(as.character(x), ";")[[1]]
+        if(!is.na(x)) {
+          x = gsub("-", " ", x)
+          x = strsplit(as.character(x), ";")[[1]]
+          toupper(stemDocument(tolower(x)))
+        }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
@@ -2204,7 +2223,11 @@ shinyServer(function(input, output, session) {
       df = df[which(grepl(paste(select, collapse = "|"), df$institution)),]
       
       keyword = unlist(lapply(df$keyword, function(x) {
-        strsplit(as.character(x), ";")[[1]]
+        if(!is.na(x)) {
+          x = gsub("-", " ", x)
+          x = strsplit(as.character(x), ";")[[1]]
+          toupper(stemDocument(tolower(x)))
+        }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
       keyword = keyword[order(keyword$Freq, decreasing = T),]
