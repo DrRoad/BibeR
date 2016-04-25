@@ -291,8 +291,8 @@ parse_all = function(file_path) {
   
   # if country is NA, but when c_author country is available, define country as c_author country
   df$country = as.character(df$country)
-  df[which(is.na(df$country)), ]$country = "not" # "not" is a random string to let to match, which is odd
-  df[which(df$country == "not"),]$country = as.character(df$c.author.country[which(df$country == "not")])
+  df[which(is.na(df$country)), "country"] = "not" # "not" is a random string to let to match, which is odd
+  df[which(df$country == "not"), "country"] = as.character(df$c.author.country[which(df$country == "not")])
   
   # other case like when corresponding author did not appear in author address, need to add it into the author country
   a = as.character(df$c.author.country)
