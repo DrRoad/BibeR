@@ -556,6 +556,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
+          x = gsub("^ ", "", x)
           x = strsplit(as.character(x), ";")[[1]]
           x = strsplit(x, " ")
           x_last = x[[1]][length(x[[1]])]
@@ -892,6 +893,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
+          x = gsub("^ ", "", x)
           x = strsplit(as.character(x), ";")[[1]]
           x = strsplit(x, " ")
           x_last = x[[1]][length(x[[1]])]
@@ -1401,6 +1403,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
+          x = gsub("^ ", "", x)
           x = strsplit(as.character(x), ";")[[1]]
           x = strsplit(x, " ")
           x_last = x[[1]][length(x[[1]])]
@@ -2056,6 +2059,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
+          x = gsub("^ ", "", x)
           x = strsplit(as.character(x), ";")[[1]]
           x = strsplit(x, " ")
           x_last = x[[1]][length(x[[1]])]
@@ -2148,6 +2152,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
+          x = gsub("^ ", "", x)
           x = strsplit(as.character(x), ";")[[1]]
           x = strsplit(x, " ")
           x_last = x[[1]][length(x[[1]])]
@@ -2240,6 +2245,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
+          x = gsub("^ ", "", x)
           x = strsplit(as.character(x), ";")[[1]]
           x = strsplit(x, " ")
           x_last = x[[1]][length(x[[1]])]
