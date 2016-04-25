@@ -557,7 +557,10 @@ shinyServer(function(input, output, session) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
           x = strsplit(as.character(x), ";")[[1]]
-          toupper(stemDocument(tolower(x)))
+          x = strsplit(x, " ")
+          x_last = x[[1]][length(x[[1]])]
+          x_last = toupper(stemDocument(tolower(x_last)))
+          x = paste(x[[1]][-length(x[[1]])], x_last,  sep = " ")
         }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
@@ -890,7 +893,10 @@ shinyServer(function(input, output, session) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
           x = strsplit(as.character(x), ";")[[1]]
-          toupper(stemDocument(tolower(x)))
+          x = strsplit(x, " ")
+          x_last = x[[1]][length(x[[1]])]
+          x_last = toupper(stemDocument(tolower(x_last)))
+          x = paste(x[[1]][-length(x[[1]])], x_last,  sep = " ")
         }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
@@ -1396,7 +1402,10 @@ shinyServer(function(input, output, session) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
           x = strsplit(as.character(x), ";")[[1]]
-          toupper(stemDocument(tolower(x)))
+          x = strsplit(x, " ")
+          x_last = x[[1]][length(x[[1]])]
+          x_last = toupper(stemDocument(tolower(x_last)))
+          x = paste(x[[1]][-length(x[[1]])], x_last,  sep = " ")
         }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
@@ -2048,7 +2057,10 @@ shinyServer(function(input, output, session) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
           x = strsplit(as.character(x), ";")[[1]]
-          toupper(stemDocument(tolower(x)))
+          x = strsplit(x, " ")
+          x_last = x[[1]][length(x[[1]])]
+          x_last = toupper(stemDocument(tolower(x_last)))
+          x = paste(x[[1]][-length(x[[1]])], x_last,  sep = " ")
         }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
@@ -2137,7 +2149,10 @@ shinyServer(function(input, output, session) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
           x = strsplit(as.character(x), ";")[[1]]
-          toupper(stemDocument(tolower(x)))
+          x = strsplit(x, " ")
+          x_last = x[[1]][length(x[[1]])]
+          x_last = toupper(stemDocument(tolower(x_last)))
+          x = paste(x[[1]][-length(x[[1]])], x_last,  sep = " ")
         }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
@@ -2226,7 +2241,10 @@ shinyServer(function(input, output, session) {
         if(!is.na(x)) {
           x = gsub("-", " ", x)
           x = strsplit(as.character(x), ";")[[1]]
-          toupper(stemDocument(tolower(x)))
+          x = strsplit(x, " ")
+          x_last = x[[1]][length(x[[1]])]
+          x_last = toupper(stemDocument(tolower(x_last)))
+          x = paste(x[[1]][-length(x[[1]])], x_last,  sep = " ")
         }else{return(NULL)}
       }))
       keyword = as.data.frame(table(keyword))
