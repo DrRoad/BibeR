@@ -556,7 +556,6 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = strsplit(as.character(x), ";")[[1]]
-          x = unlist(lapply(x, function(x) {
           x = gsub("^ ", "", x)
           x = removePunctuation(x)
           x = strsplit(x, " ")
@@ -895,7 +894,6 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = strsplit(as.character(x), ";")[[1]]
-          x = unlist(lapply(x, function(x) {
           x = gsub("^ ", "", x)
           x = removePunctuation(x)
           x = strsplit(x, " ")
@@ -1407,7 +1405,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = strsplit(as.character(x), ";")[[1]]
-          x = unlist(lapply(x, function(x) {
+          
           x = gsub("^ ", "", x)
           x = removePunctuation(x)
           x = strsplit(x, " ")
@@ -2065,7 +2063,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = strsplit(as.character(x), ";")[[1]]
-          x = unlist(lapply(x, function(x) {
+          
           x = gsub("^ ", "", x)
           x = removePunctuation(x)
           x = strsplit(x, " ")
@@ -2160,7 +2158,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = strsplit(as.character(x), ";")[[1]]
-          x = unlist(lapply(x, function(x) {
+          
           x = gsub("^ ", "", x)
           x = removePunctuation(x)
           x = strsplit(x, " ")
@@ -2255,7 +2253,7 @@ shinyServer(function(input, output, session) {
       keyword = unlist(lapply(df$keyword, function(x) {
         if(!is.na(x)) {
           x = strsplit(as.character(x), ";")[[1]]
-          x = unlist(lapply(x, function(x) {
+          
           x = gsub("^ ", "", x)
           x = removePunctuation(x)
           x = strsplit(x, " ")
